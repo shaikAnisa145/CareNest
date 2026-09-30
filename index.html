@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareNest | Healthcare Near You</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <h2>CareNest</h2>
+                <span>Your Health, Our Care</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#hospitals">Hospitals</a>
+            <a href="#doctors">Doctors</a>
+            <a href="#appointments">Appointments</a>
+        </nav>
+
+        <button class="location-btn" onclick="findNearbyPlaces()">
+            <i class="fa-solid fa-location-crosshairs"></i>
+            My Location
+        </button>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-shield-heart"></i>
+                Trusted Healthcare Assistance
+            </div>
+
+            <h1>
+                Healthcare that is
+                <span>closer to you.</span>
+            </h1>
+
+            <p>
+                Find nearby hospitals and healthcare providers,
+                explore available information and book your
+                appointment directly through CareNest.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                    onclick="findNearbyPlaces()">
+
+                    <i class="fa-solid fa-location-dot"></i>
+                    Find Healthcare Near Me
+
+                </button>
+
+                <button class="secondary-btn"
+                    onclick="scrollToSection('doctors')">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+                    Find Doctors
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-card-top">
+                <span>CareNest</span>
+
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div class="health-icon">
+                <i class="fa-solid fa-hospital"></i>
+            </div>
+
+            <h3>Healthcare Near You</h3>
+
+            <p>
+                Find hospitals and healthcare providers
+                based on your current location.
+            </p>
+
+            <div class="hero-stat">
+
+                <div>
+                    <strong>24/7</strong>
+                    <small>Care Access</small>
+                </div>
+
+                <div>
+                    <strong>Nearby</strong>
+                    <small>Healthcare</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOCATION STATUS -->
+
+    <section class="location-section">
+
+        <div class="location-box">
+
+            <div class="location-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+
+            <div>
+
+                <h3 id="locationStatus">
+                    Find healthcare near you
+                </h3>
+
+                <p id="locationMessage">
+                    Click "My Location" to search for nearby
+                    hospitals and doctors.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOSPITALS -->
+
+    <section class="section" id="hospitals">
+
+        <div class="section-heading">
+
+            <span>NEARBY HEALTHCARE</span>
+
+            <h2>
+                Hospitals Near You
+            </h2>
+
+            <p>
+                Real nearby hospital listings from Google Places.
+            </p>
+
+        </div>
+
+        <div id="hospitalResults" class="results-grid">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-hospital"></i>
+                </div>
+
+                <h3>Find Nearby Hospitals</h3>
+
+                <p>
+                    Allow location access to see hospitals
+                    near your current location.
+                </p>
+
+                <button class="primary-btn"
+                    onclick="findNearbyPlaces()">
+
+                    <i class="fa-solid fa-location-dot"></i>
+                    Find Hospitals
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DOCTORS -->
+
+    <section class="section doctors-section" id="doctors">
+
+        <div class="section-heading">
+
+            <span>HEALTHCARE PROFESSIONALS</span>
+
+            <h2>
+                Doctors Near You
+            </h2>
+
+            <p>
+                Find nearby Google-listed healthcare professionals.
+            </p>
+
+        </div>
+
+        <div id="doctorResults" class="results-grid">
+
+            <div class="empty-state">
+
+                <div class="empty-icon doctor-color">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+
+                <h3>Find Nearby Doctors</h3>
+
+                <p>
+                    Search your location to discover
+                    available nearby listings.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPOINTMENTS -->
+
+    <section class="section appointments-section"
+        id="appointments">
+
+        <div class="section-heading">
+
+            <span>CARENEST APPOINTMENTS</span>
+
+            <h2>
+                My Appointments
+            </h2>
+
+            <p>
+                Appointments booked through CareNest
+                are stored here.
+            </p>
+
+        </div>
+
+        <div id="appointmentList">
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h3>No Appointments Yet</h3>
+
+                <p>
+                    Your confirmed CareNest appointments
+                    will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPOINTMENT MODAL -->
+
+    <div id="appointmentModal"
+        class="modal hidden">
+
+        <div class="modal-overlay"
+            onclick="closeAppointmentModal()">
+        </div>
+
+        <div class="appointment-modal">
+
+            <button class="close-btn"
+                onclick="closeAppointmentModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+            <div class="modal-header">
+
+                <div class="modal-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div>
+
+                    <span>CARENEST APPOINTMENT</span>
+
+                    <h2>Book Appointment</h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="selected-doctor">
+
+                <div class="doctor-avatar">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+
+                <div>
+
+                    <h3 id="appointmentDoctor">
+                        Doctor
+                    </h3>
+
+                    <p id="appointmentHospital">
+                        Hospital
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="appointmentForm"
+                onsubmit="confirmAppointment(event)">
+
+                <input type="hidden"
+                    id="selectedPlaceId">
+
+                <input type="hidden"
+                    id="selectedDoctorName">
+
+                <input type="hidden"
+                    id="selectedHospitalName">
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="patientName"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="patientPhone"
+                            placeholder="Enter phone number"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label>
+                            Appointment Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="appointmentDate"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Appointment Time
+                        </label>
+
+                        <select
+                            id="appointmentTime"
+                            required>
+
+                            <option value="">
+                                Select time
+                            </option>
+
+                            <option>09:00 AM</option>
+                            <option>09:30 AM</option>
+                            <option>10:00 AM</option>
+                            <option>10:30 AM</option>
+                            <option>11:00 AM</option>
+                            <option>11:30 AM</option>
+                            <option>12:00 PM</option>
+                            <option>02:00 PM</option>
+                            <option>02:30 PM</option>
+                            <option>03:00 PM</option>
+                            <option>03:30 PM</option>
+                            <option>04:00 PM</option>
+                            <option>04:30 PM</option>
+                            <option>05:00 PM</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Reason for Visit
+                    </label>
+
+                    <textarea
+                        id="visitReason"
+                        placeholder="Briefly describe your reason for visiting..."
+                        rows="3"></textarea>
+
+                </div>
+
+
+                <button class="confirm-btn"
+                    type="submit">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    Confirm Appointment
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+
+            <div>
+                <h3>CareNest</h3>
+                <p>Your Health, Our Care</p>
+            </div>
+
+        </div>
+
+        <p class="footer-copy">
+            © 2026 CareNest. Healthcare information
+            and appointment management platform.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
